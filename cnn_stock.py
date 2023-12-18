@@ -72,7 +72,7 @@ labels_10_5_wo_vb_wo_ma.npy
 """
 
 # # create train data
-images, labels = get_all_train_drawn("/home/ttzhang/00-code/00-deep-learing/project/to_csv_ret3.zip",10,5, "wo_vb_wo_ma") # 手动调整
+images, labels = get_all_train_drawn("xx/to_csv_ret3.zip",10,5, "wo_vb_wo_ma") # 手动调整
 images = np.concatenate(images, axis=0)
 labels = np.concatenate(labels, axis=0)
 print(images.shape)
@@ -119,7 +119,7 @@ num_epochs = 100
 model = Net().to(device)
 
 try:
-    model.load_state_dict(torch.load("baseline_epoch_5_train_0.704243_val_0.695599.pt", map_location=device))
+    model.load_state_dict(torch.load("cnn_stock.pt", map_location=device))
 except:
     pass
 
@@ -227,7 +227,7 @@ def get_test_df(folder_zip_path:str, window_size:int, predict_period:int):
     return dataframe
 
 
-bullish_prob_df = get_test_df("/home/ttzhang/00-code/00-deep-learing/project/to_csv_ret3.zip", 10, 5) # 手动调整
+bullish_prob_df = get_test_df("xx/to_csv_ret3.zip", 10, 5) # 手动调整
 print(bullish_prob_df)
 bullish_prob_df.to_excel("bull_I10R5.xlsx") # 手动调整
 
